@@ -5,7 +5,8 @@
 	File			: binTree.c
 	Deskripsi		: body header binTree.h
 	Tanggal & versi	: 19-07-2020/ versi 7
-	Sumber			: Github Josué Pedroza (jpp08)
+	Sumber			: Github JosuÃ© Pedroza (jpp08)
+				: Github Luka Kralj (lukakralj)
 =========================================================*/
 
 #include "binTree.h"
