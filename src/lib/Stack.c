@@ -6,6 +6,7 @@
 	Deskripsi		: body header Stack.h
 	Tanggal & versi	: 19-07-2020/ versi 7
 	Sumber			: Github Josué Pedroza (jpp08)
+				: Github Luka Kralj (lukakralj)
 =========================================================*/
 
 #include "Stack.h"
