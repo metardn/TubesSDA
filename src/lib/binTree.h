@@ -1,11 +1,12 @@
 /*=========================================================
 	Nama			: Aulia Rahmi (191524035)
-					: Meta Arda Nabila (191524048)
+				: Meta Arda Nabila (191524048)
 	Kelas			: 1B D4-Teknik Informatika
 	File			: binTree.h
 	Deskripsi		: spesifikasi ADT binary tree dinamis
-	Tanggal & versi	: 19-07-2020/ versi 7
-	Sumber			: Github Josué Pedroza (jpp08)
+	Tanggal & versi		: 19-07-2020/ versi 7
+	Sumber			: Github JosuÃ© Pedroza (jpp08)
+				: Github Luka Kralj (lukakralj)
 =========================================================*/
 
 #ifndef BINTREE_H
