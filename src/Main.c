@@ -1,12 +1,12 @@
 /*=========================================================
 	Nama			: Aulia Rahmi (191524035)
-					: Meta Arda Nabila (191524048)
+				: Meta Arda Nabila (191524048)
 	Kelas			: 1B D4-Teknik Informatika
 	File			: Main.c
 	Deskripsi		: implementasi expression binary tree
 	Tanggal & versi	: 19-07-2020/ versi 7
 	Sumber			: Github Josué Pedroza (jpp08)
-					: Github Luka Kralj (lukakralj)
+				: Github Luka Kralj (lukakralj)
 =========================================================*/
 
 #include <math.h>
