@@ -1,77 +1,89 @@
-/*===========================================
-	Nama	: Aulia Rahmi (191524035)
-			: Meta Arda Nabila (191524048)
-	Kelas	: 1B D4-Teknik Informatika
-	File	: Stack.c
-	Sumber	: Github Josué Pedroza (jpp08)
-===========================================*/
+/*=========================================================
+	Nama			: Aulia Rahmi (191524035)
+					: Meta Arda Nabila (191524048)
+	Kelas			: 1B D4-Teknik Informatika
+	File			: Stack.c
+	Deskripsi		: body header Stack.h
+	Tanggal & versi	: 19-07-2020/ versi 7
+	Sumber			: Github JosuÃ© Pedroza (jpp08)
+=========================================================*/
 
 #include "Stack.h"
 
-int isEmpty(Stack *stack){
-	if(!stack) {
-		printf("Stack tidak ada.");
-		return TRUE;
+/**************** ALOKASI ****************/
+Stack* CreateStack(){
+	Stack *temp = (Stack*)calloc(sizeof(Stack), 1);
+	if(!temp) {
+		printf("Alokasi gagal");
+		return;
 	}
-	return stack->topNode == NULL;
+	return temp;
 }
 
-StackNode* MakeStackNode(){
-	StackNode *tmp = (StackNode*)calloc(sizeof(StackNode), 1);
-	if(!tmp){
-		printf("Penyimpanan penuh.");
-		exit(1);
+StackNode* CreateStackNode(){
+	StackNode *temp = (StackNode*)calloc(sizeof(StackNode), 1);
+	if(!temp){
+		printf("Alokasi gagal");
+		return;
 	}
-	return tmp;
+	return temp;
 }
 
-Stack* MakeStack(){
-	Stack *tmp = (Stack*)calloc(sizeof(Stack), 1);
-	if(!tmp) {
-		printf("Penyimpanan penuh.");
-		exit(1);
+void Push(Stack *stack, infotype info, int symbol){
+	StackNode *node = CreateStackNode();			//alokasi
+	if(!node) {
+		printf("Push gagal");
+		return;
 	}
-	return tmp;
+	node->info = info;								//assignment
+	node->symbol = symbol;
+	node->next = stack->top;
+	stack->top = node;
 }
 
-void PrintStack(StackNode *tNode){
-	if(!tNode)	return;
-	if(tNode->isChar){
-		printf("%c", tNode->data.opr);
-	}
-	else{
-		printf("%g", tNode->data.num);
-	}
-}
-
-void Push(Stack *stack, Data datum, int isChar){
-	StackNode *tmp = MakeStackNode();
-	if(!tmp) {
-		printf("Penyimpanan penuh.");
-		exit(1);
-	}
-	tmp->data = datum;
-	tmp->isChar = isChar;
-	tmp->pNode = stack->topNode;
-	stack->topNode = tmp;
-}
-
+/*************** DEALOKASI ***************/
 StackNode pop(Stack *stack){
-	StackNode res;
-	res.data = sample;
-	res.isChar = FALSE;
-	if(!stack || isEmpty(stack))	return res;
-	res = *(stack->topNode);
-	StackNode *tmp = stack->topNode;
-	stack->topNode = tmp->pNode;
-	free(tmp);
-	return res;
+	StackNode node;
+	infotype nilData = {0};							//variabel kosong
+	
+	node.info = nilData;
+	node.symbol = false;
+	
+	if(!stack || isEmptyStack(stack))				//jika Stack kosong
+		return node;
+		
+	node = *(stack->top);							//memindahkan top Stack
+	StackNode *temp = stack->top;
+	stack->top = temp->next;
+	free(temp);										//menghapus memori
+	return node;
 }
 
 void DeleteStack(Stack *stack){
-	StackNode sn;
-	while(!isEmpty(stack)) {
-		sn = pop(stack);
-		PrintStack(&sn);
+	StackNode node;
+	while(!isEmptyStack(stack)) {
+		node = pop(stack);
+		PrintStack(&node);
 	}
 }
+
+/*********** CEK DAN LAIN-LAIN ***********/
+int isEmptyStack(Stack *stack){
+	if(!stack) {
+		printf("Stack kosong");
+		return true;
+	}
+	return stack->top == NULL;
+}
+
+
+void PrintStack(StackNode *node){
+	if(!node)	return;
+	if(node->symbol){
+		printf("%c", node->info.opr);
+	}
+	else{
+		printf("%g", node->info.num);
+	}
+}
+
